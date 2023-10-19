@@ -1,10 +1,13 @@
-import React from "react";
+import Link from "next/link";
+
 import { Button } from "@radix-ui/themes";
 
-const TasksPage = () => {
+const TasksPage = (): JSX.Element => {
   return (
     <div>
-      <Button>New Task</Button>
+      <Button>
+        <Link href="/tasks/new">New Task</Link>
+      </Button>
     </div>
   );
 };
