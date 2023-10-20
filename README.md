@@ -11,3 +11,4 @@
 - [ ] RadixUI
 - [ ] SimpleMDE instead TextArea
 - [ ] React hook form
+- [ ] Zod validation
