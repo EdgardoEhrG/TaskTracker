@@ -21,7 +21,7 @@ import { z } from "zod";
 
 type TaskForm = z.infer<typeof createTaskSchema>;
 
-const NewTaskPage = () => {
+const NewTaskPage = (): JSX.Element => {
   const router = useRouter();
 
   const {

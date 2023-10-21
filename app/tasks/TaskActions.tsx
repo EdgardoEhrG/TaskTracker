@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@radix-ui/themes";
 
-const TaskActions = () => {
+const TaskActions = (): JSX.Element => {
   return (
     <div className="mb-5">
       <Button>

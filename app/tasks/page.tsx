@@ -1,5 +1,6 @@
 import { Table } from "@radix-ui/themes";
 import StatusBadge from "../components/StatusBadge";
+import Link from "../components/Link";
 import TaskActions from "./TaskActions";
 
 import { tableHeaders } from "./consts";
@@ -12,7 +13,7 @@ import delay from "delay";
 const TasksPage = async (): Promise<JSX.Element> => {
   const tasks = await prisma.task.findMany();
 
-  delay(2000);
+  await delay(2000);
 
   return (
     <div>
@@ -40,7 +41,7 @@ const TasksPage = async (): Promise<JSX.Element> => {
             return (
               <Table.Row key={task.id}>
                 <Table.Cell>
-                  {task.title}{" "}
+                  <Link href={`/tasks/${task.id}`}>{task.title}</Link>
                   <div className="block md:hidden">
                     <StatusBadge status={task.status} />
                   </div>
