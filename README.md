@@ -8,7 +8,9 @@
 
 ## Useful Elements
 
-- [ ] RadixUI
+- [ ] RadixUI elements
 - [ ] SimpleMDE instead TextArea
 - [ ] React hook form
 - [ ] Zod validation
+- [ ] delay package
+- [ ] Skeleton component
