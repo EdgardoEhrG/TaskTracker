@@ -2,9 +2,9 @@ import { notFound } from "next/navigation";
 
 import prisma from "@/prisma/client";
 
-import { Card, Flex, Heading, Text } from "@radix-ui/themes";
-import StatusBadge from "@/app/components/StatusBadge";
-import ReactMarkdown from "react-markdown";
+import { Box, Grid } from "@radix-ui/themes";
+import EditTaskButton from "./EditTaskButton";
+import TaskDetails from "./TaskDetails";
 
 interface TaskDetailPageProps {
   params: { id: string };
@@ -22,18 +22,14 @@ const TaskDetailPage = async ({
   if (!task) return notFound();
 
   return (
-    <div>
-      <Heading>{task.title}</Heading>
-      <Flex gap="3" my="4">
-        <StatusBadge status={task.status} />
-        <Text>
-          Created at: <i>{task.createdAt.toDateString()}</i>
-        </Text>
-      </Flex>
-      <Card className="prose" mt="4">
-        <ReactMarkdown>{task.description}</ReactMarkdown>
-      </Card>
-    </div>
+    <Grid columns={{ initial: "1", md: "2" }} gap="5">
+      <Box>
+        <TaskDetails task={task} />
+      </Box>
+      <Box>
+        <EditTaskButton taskId={task.id} />
+      </Box>
+    </Grid>
   );
 };
 
