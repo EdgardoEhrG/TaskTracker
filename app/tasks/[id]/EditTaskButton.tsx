@@ -1,5 +1,6 @@
-import { Button, Link } from "@radix-ui/themes";
+import { Button } from "@radix-ui/themes";
 import { Pencil2Icon } from "@radix-ui/react-icons";
+import { Link } from "@/app/components";
 
 interface EditTaskButtonProps {
   taskId: number;
@@ -7,11 +8,12 @@ interface EditTaskButtonProps {
 
 const EditTaskButton = ({ taskId }: EditTaskButtonProps) => {
   return (
-    <Button>
-      <Link href={`/tasks/${taskId}/edit`}>
-        <Pencil2Icon /> EDit Task
-      </Link>
-    </Button>
+    <div>
+      <Button>
+        <Pencil2Icon />
+        <Link href={`/tasks/${taskId}/edit`}>Edit Task</Link>
+      </Button>
+    </div>
   );
 };
 
