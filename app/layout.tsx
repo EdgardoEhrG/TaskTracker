@@ -7,7 +7,7 @@ import "./theme-config.css";
 import "./globals.css";
 
 import { Navbar } from "./components";
-import { Theme } from "@radix-ui/themes";
+import { Container, Theme } from "@radix-ui/themes";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -26,7 +26,9 @@ export default function RootLayout({
       <body className={inter.variable}>
         <Theme appearance="light" accentColor="violet">
           <Navbar />
-          <main className="p-5">{children}</main>
+          <main className="p-5">
+            <Container>{children}</Container>
+          </main>
           {/* <ThemePanel /> */}
         </Theme>
       </body>

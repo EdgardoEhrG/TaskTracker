@@ -2,9 +2,10 @@ import { notFound } from "next/navigation";
 
 import prisma from "@/prisma/client";
 
-import { Box, Grid } from "@radix-ui/themes";
+import { Box, Flex, Grid } from "@radix-ui/themes";
 import EditTaskButton from "./EditTaskButton";
 import TaskDetails from "./TaskDetails";
+import DeleteTaskButton from "./DeleteTaskButton";
 
 interface TaskDetailPageProps {
   params: { id: string };
@@ -22,12 +23,15 @@ const TaskDetailPage = async ({
   if (!task) return notFound();
 
   return (
-    <Grid columns={{ initial: "1", md: "2" }} gap="5">
-      <Box>
+    <Grid columns={{ initial: "1", sm: "5" }} gap="5">
+      <Box className="lg:col-span-4">
         <TaskDetails task={task} />
       </Box>
       <Box>
-        <EditTaskButton taskId={task.id} />
+        <Flex direction="column" gap="4">
+          <EditTaskButton taskId={task.id} />
+          <DeleteTaskButton taskId={task.id} />
+        </Flex>
       </Box>
     </Grid>
   );

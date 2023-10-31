@@ -8,12 +8,10 @@ interface EditTaskButtonProps {
 
 const EditTaskButton = ({ taskId }: EditTaskButtonProps) => {
   return (
-    <div>
-      <Button>
-        <Pencil2Icon />
-        <Link href={`/tasks/${taskId}/edit`}>Edit Task</Link>
-      </Button>
-    </div>
+    <Button>
+      <Pencil2Icon />
+      <Link href={`/tasks/${taskId}/edit`}>Edit Task</Link>
+    </Button>
   );
 };
 

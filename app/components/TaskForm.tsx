@@ -3,12 +3,12 @@
 import { useState } from "react";
 
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
 
 import "easymde/dist/easymde.min.css";
 
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import { ErrorMessage, Spinner } from "@/app/components";
+import SimpleMDE from "react-simplemde-editor";
 
 import { taskSchema } from "@/app/api/tasks/validation";
 
@@ -18,10 +18,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { z } from "zod";
 import { Task } from "@prisma/client";
-
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-});
 
 type TaskFormData = z.infer<typeof taskSchema>;
 
@@ -55,6 +51,7 @@ const TaskForm = ({ task }: TaskFormProps): JSX.Element => {
       }
 
       router.push("/tasks");
+      router.refresh();
     } catch (error) {
       setIsLoading(false);
       setError("An unexpected error occured.");
