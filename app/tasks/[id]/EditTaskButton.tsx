@@ -10,7 +10,7 @@ const EditTaskButton = ({ taskId }: EditTaskButtonProps) => {
   return (
     <Button>
       <Pencil2Icon />
-      <Link href={`/tasks/${taskId}/edit`}>Edit Task</Link>
+      <Link href={`/tasks/edit/${taskId}`}>Edit Task</Link>
     </Button>
   );
 };

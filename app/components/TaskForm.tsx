@@ -50,7 +50,7 @@ const TaskForm = ({ task }: TaskFormProps): JSX.Element => {
         await axios.post("/api/tasks", data);
       }
 
-      router.push("/tasks");
+      router.push("/tasks/list");
       router.refresh();
     } catch (error) {
       setIsLoading(false);

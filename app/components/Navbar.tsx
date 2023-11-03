@@ -3,46 +3,110 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { useSession } from "next-auth/react";
+
 import { LinkElement } from "../types/link";
+
+import {
+  Avatar,
+  Box,
+  Container,
+  DropdownMenu,
+  Flex,
+  Text,
+} from "@radix-ui/themes";
 
 import { GrTasks } from "react-icons/gr";
 
 import classNames from "classnames";
-
-const links: LinkElement[] = [
-  { label: "Dashboard", href: "/" },
-  { label: "Tasks", href: "/tasks" },
-];
+import Skeleton from "react-loading-skeleton";
 
 const Navbar = (): JSX.Element => {
+  return (
+    <nav className="border-b mb-5 px-5 py-4">
+      <Container>
+        <Flex justify="between">
+          <Flex align="center" gap="3">
+            <Link href="/">
+              <GrTasks />
+            </Link>
+            <NavLinks />
+          </Flex>
+          <AuthStatus />
+        </Flex>
+      </Container>
+    </nav>
+  );
+};
+
+const NavLinks = () => {
+  const links: LinkElement[] = [
+    { label: "Dashboard", href: "/" },
+    { label: "Tasks", href: "/tasks/list" },
+  ];
+
   const currentPath = usePathname();
 
   return (
-    <nav className="flex space-x-6 border-b mb-5 px-5 h-14 items-center">
-      <Link href="/">
-        <GrTasks />
+    <ul className="flex space-x-6">
+      {links.map((link, idx) => {
+        return (
+          <li key={idx}>
+            <Link
+              className={classNames({
+                "nav-link": true,
+                "text-zinc-900": link.href === currentPath,
+              })}
+              href={link.href}
+            >
+              {link.label}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+const AuthStatus = () => {
+  const { status, data: session } = useSession();
+
+  if (status === "loading") return <Skeleton width="3rem" />;
+
+  if (status === "unauthenticated")
+    return (
+      <Link className="nav-link" href="/api/auth/signin">
+        Log In
       </Link>
-      <ul className="flex space-x-6">
-        {links.map((link, idx) => {
-          return (
-            <li key={idx}>
-              <Link
-                className={classNames(
-                  ["hover:text-zinc-800", "transition-colors"],
-                  {
-                    "text-zinc-900": link.href === currentPath,
-                    "text-zinc-500": link.href !== currentPath,
-                  }
-                )}
-                href={link.href}
-              >
-                {link.label}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    );
+
+  return (
+    <>
+      {session && (
+        <Box>
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>
+              <Avatar
+                src={session.user!.image!}
+                fallback="?"
+                size="2"
+                radius="full"
+                className="cursor-pointer"
+                referrerPolicy="no-referrer"
+              />
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content>
+              <DropdownMenu.Label>
+                <Text size="2">{session.user!.email}</Text>
+              </DropdownMenu.Label>
+              <DropdownMenu.Item>
+                <Link href="/api/auth/signout">Log Out</Link>
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+        </Box>
+      )}
+    </>
   );
 };
 

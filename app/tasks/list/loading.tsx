@@ -1,18 +1,16 @@
 import { Table } from "@radix-ui/themes";
-import { StatusBadge, Link } from "../components";
-import TaskActions from "./TaskActions";
+import Skeleton from "react-loading-skeleton";
 
-import { tableHeaders } from "./consts";
+import "react-loading-skeleton/dist/skeleton.css";
 
-import prisma from "@/prisma/client";
+import { idxs, tableHeaders } from "../consts";
 
 import classNames from "classnames";
+import TaskActions from "./TaskActions";
 
-const TasksPage = async (): Promise<JSX.Element> => {
-  const tasks = await prisma.task.findMany();
-
+const LoadingTaskPage = (): JSX.Element => {
   return (
-    <div>
+    <>
       <TaskActions />
       <Table.Root variant="surface">
         <Table.Header>
@@ -33,28 +31,25 @@ const TasksPage = async (): Promise<JSX.Element> => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {tasks.map((task) => {
+          {idxs.map((idx) => {
             return (
-              <Table.Row key={task.id}>
+              <Table.Row key={idx}>
                 <Table.Cell>
-                  <Link href={`/tasks/${task.id}`}>{task.title}</Link>
-                  <div className="block md:hidden">
-                    <StatusBadge status={task.status} />
-                  </div>
+                  <Skeleton />
                 </Table.Cell>
                 <Table.Cell className="hidden md:table-cell">
-                  <StatusBadge status={task.status} />
+                  <Skeleton />
                 </Table.Cell>
                 <Table.Cell className="hidden md:table-cell">
-                  {task.createdAt.toDateString()}
+                  <Skeleton />
                 </Table.Cell>
               </Table.Row>
             );
           })}
         </Table.Body>
       </Table.Root>
-    </div>
+    </>
   );
 };
 
-export default TasksPage;
+export default LoadingTaskPage;

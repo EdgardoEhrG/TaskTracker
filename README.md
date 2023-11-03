@@ -17,3 +17,6 @@
 - [ ] markdown package
 - [ ] dynamic imports
 - [ ] Alert dialog
+
+- [ ] Authentication (Google) | NextAuth.js
+- [ ] Prisma adapter
