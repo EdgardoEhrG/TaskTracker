@@ -12,7 +12,7 @@ interface DeleteTaskButtonProps {
   taskId: number;
 }
 
-const DeleteTaskButton = ({ taskId }: DeleteTaskButtonProps) => {
+const DeleteTaskButton = ({ taskId }: DeleteTaskButtonProps): JSX.Element => {
   const router = useRouter();
 
   const [error, setError] = useState<boolean>(false);

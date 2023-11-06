@@ -8,7 +8,7 @@ interface TaskDetailsProps {
   task: Task;
 }
 
-const TaskDetails = ({ task }: TaskDetailsProps) => {
+const TaskDetails = ({ task }: TaskDetailsProps): JSX.Element => {
   return (
     <>
       <Heading>{task.title}</Heading>

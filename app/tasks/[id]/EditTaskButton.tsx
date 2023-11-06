@@ -6,7 +6,7 @@ interface EditTaskButtonProps {
   taskId: number;
 }
 
-const EditTaskButton = ({ taskId }: EditTaskButtonProps) => {
+const EditTaskButton = ({ taskId }: EditTaskButtonProps): JSX.Element => {
   return (
     <Button>
       <Pencil2Icon />

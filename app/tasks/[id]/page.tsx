@@ -6,6 +6,7 @@ import { Box, Flex, Grid } from "@radix-ui/themes";
 import EditTaskButton from "./EditTaskButton";
 import TaskDetails from "./TaskDetails";
 import DeleteTaskButton from "./DeleteTaskButton";
+import AssigneeSelect from "./AssigneeSelect";
 
 interface TaskDetailPageProps {
   params: { id: string };
@@ -29,6 +30,7 @@ const TaskDetailPage = async ({
       </Box>
       <Box>
         <Flex direction="column" gap="4">
+          <AssigneeSelect task={task} />
           <EditTaskButton taskId={task.id} />
           <DeleteTaskButton taskId={task.id} />
         </Flex>

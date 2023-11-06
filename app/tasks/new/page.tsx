@@ -7,7 +7,7 @@ const TaskForm = dynamic(() => import("@/app/components/TaskForm"), {
   loading: () => <SkeletonForm />,
 });
 
-const NewTaskPage = () => {
+const NewTaskPage = (): JSX.Element => {
   return <TaskForm />;
 };
 

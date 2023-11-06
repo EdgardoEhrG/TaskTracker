@@ -39,7 +39,7 @@ const Navbar = (): JSX.Element => {
   );
 };
 
-const NavLinks = () => {
+const NavLinks = (): JSX.Element => {
   const links: LinkElement[] = [
     { label: "Dashboard", href: "/" },
     { label: "Tasks", href: "/tasks/list" },
@@ -68,7 +68,7 @@ const NavLinks = () => {
   );
 };
 
-const AuthStatus = () => {
+const AuthStatus = (): JSX.Element => {
   const { status, data: session } = useSession();
 
   if (status === "loading") return <Skeleton width="3rem" />;
