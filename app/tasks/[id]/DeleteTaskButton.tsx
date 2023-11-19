@@ -1,12 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 
-import axios from "axios";
 import { Spinner } from "@/app/components";
+
+import axios from "axios";
 
 interface DeleteTaskButtonProps {
   taskId: number;

@@ -3,10 +3,11 @@ import Skeleton from "react-loading-skeleton";
 
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { idxs, tableHeaders } from "../consts";
+import TaskActions from "./TaskActions";
+
+import { idxs, tableHeaders } from "../../consts";
 
 import classNames from "classnames";
-import TaskActions from "./TaskActions";
 
 const LoadingTaskPage = (): JSX.Element => {
   return (

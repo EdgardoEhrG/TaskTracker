@@ -1,8 +1,10 @@
-import { Task } from "@prisma/client";
-
 import { Heading, Flex, Card, Text } from "@radix-ui/themes";
+
 import { StatusBadge } from "@/app/components";
+
 import ReactMarkdown from "react-markdown";
+
+import { Task } from "@prisma/client";
 
 interface TaskDetailsProps {
   task: Task;

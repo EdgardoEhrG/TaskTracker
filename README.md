@@ -12,14 +12,20 @@
 - [ ] SimpleMDE instead TextArea
 - [ ] React hook form
 - [ ] Zod validation
-- [ ] delay package
+- [ ] Delay package
 - [ ] Skeleton component
-- [ ] markdown package
-- [ ] dynamic imports
+- [ ] Markdown package
+- [ ] Dynamic imports
 - [ ] Alert dialog
 - [ ] Assign select
 - [ ] Toast
 - [ ] Custom hooks
+- [ ] Params
+- [ ] Column sorting
+- [ ] Pagination
+- [ ] Charts
+- [ ] Metadata
+- [ ] Cache
 
 - [ ] React query | TanStack
 

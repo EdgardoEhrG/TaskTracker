@@ -1,13 +1,17 @@
 import Link from "next/link";
-import { Button } from "@radix-ui/themes";
+
+import { Button, Flex } from "@radix-ui/themes";
+
+import TaskStatusFilter from "./TaskStatusFilter";
 
 const TaskActions = (): JSX.Element => {
   return (
-    <div className="mb-5">
+    <Flex justify="between">
+      <TaskStatusFilter />
       <Button>
         <Link href="/tasks/new">New Task</Link>
       </Button>
-    </div>
+    </Flex>
   );
 };
 

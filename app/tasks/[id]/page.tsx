@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
 
-import prisma from "@/prisma/client";
-
 import { Box, Flex, Grid } from "@radix-ui/themes";
+
 import EditTaskButton from "./EditTaskButton";
 import TaskDetails from "./TaskDetails";
 import DeleteTaskButton from "./DeleteTaskButton";
 import AssigneeSelect from "./AssigneeSelect";
+
+import { fetchUser } from "@/app/helpers";
 
 interface TaskDetailPageProps {
   params: { id: string };
@@ -17,9 +18,7 @@ const TaskDetailPage = async ({
 }: TaskDetailPageProps): Promise<JSX.Element | never> => {
   if (isNaN(Number(params.id))) return notFound();
 
-  const task = await prisma.task.findUnique({
-    where: { id: Number(params.id) },
-  });
+  const task = await fetchUser(Number(params.id));
 
   if (!task) return notFound();
 
@@ -38,5 +37,13 @@ const TaskDetailPage = async ({
     </Grid>
   );
 };
+
+export async function generateMetadata({ params }: TaskDetailPageProps) {
+  const task = await fetchUser(Number(params.id));
+  return {
+    title: task?.title,
+    description: `Details of task ${task?.id}`,
+  };
+}
 
 export default TaskDetailPage;

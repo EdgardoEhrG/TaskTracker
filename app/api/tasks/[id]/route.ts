@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { patchTaskSchema, taskSchema } from "../validation";
+import { patchTaskSchema } from "../validation";
 
 import prisma from "@/prisma/client";
 

@@ -1,14 +1,16 @@
 "use client";
 
-import { Task, User } from "@prisma/client";
-
 import { Select } from "@radix-ui/themes";
+
 import Skeleton from "react-loading-skeleton";
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast/headless";
 
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+
+import { Task, User } from "@prisma/client";
+
+import axios from "axios";
 
 interface AssigneeSelectProps {
   task: Task;

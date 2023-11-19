@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { useSession } from "next-auth/react";
 
 import { LinkElement } from "../types/link";
@@ -16,10 +15,10 @@ import {
   Text,
 } from "@radix-ui/themes";
 
+import Skeleton from "react-loading-skeleton";
 import { GrTasks } from "react-icons/gr";
 
 import classNames from "classnames";
-import Skeleton from "react-loading-skeleton";
 
 const Navbar = (): JSX.Element => {
   return (

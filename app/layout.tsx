@@ -8,8 +8,9 @@ import "./globals.css";
 
 import AuthProvider from "./auth/Provider";
 
-import { Navbar } from "./components";
 import { Container, Theme } from "@radix-ui/themes";
+
+import { Navbar } from "./components";
 import QueryClientProvider from "./components/QueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
